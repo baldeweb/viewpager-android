@@ -11,14 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewContainer extends AlternativeViewContainer {
     RecyclerView recyclerView;
-    Point mCenter;
-    Point mInitialTouch;
+    Point mCenter = new Point();
+    Point mInitialTouch = new Point();
 
     public RecyclerViewContainer(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs, 0);
         setClipChildren(false);
-        mCenter = new Point();
-        mInitialTouch = new Point();
     }
 
     @Override

@@ -11,18 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 public class PageIndicatorDecoration extends RecyclerView.ItemDecoration {
     int colorActive;
     int colorInactive;
-    int diameter;
-    private final float paddingBetween;
-    private final float paddingBottom;
+    int diameter = 8;
+    private final float paddingBetween = 8 * PaintCursor.DP;
+    private float paddingBottom = 18;
     private final float radius = (diameter * PaintCursor.DP) / 2F;
     private final Paint paint;
 
     public PageIndicatorDecoration(int colorActive, int colorInactive) {
         this.colorActive = colorActive;
         this.colorInactive = colorInactive;
-        this.diameter = 8;
-        this.paddingBetween = 8 * PaintCursor.DP;
-        this.paddingBottom = 18 * PaintCursor.DP + this.radius;
+        this.paddingBottom = paddingBottom * PaintCursor.DP + this.radius;
 
         paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
@@ -34,7 +32,7 @@ public class PageIndicatorDecoration extends RecyclerView.ItemDecoration {
         super.onDrawOver(c, parent, state);
 
         int itemCount = parent.getAdapter().getItemCount();
-        PageIndicatorDecoration.PaintCursor cursor = getIndicatorCursor(parent);
+        PaintCursor cursor = getIndicatorCursor(parent);
         float spacing = paddingBetween + (2F * radius);
         float firstX = cursor.x - spacing * (itemCount - 1) / 2F;
 
